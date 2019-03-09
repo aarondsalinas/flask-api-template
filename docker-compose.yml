@@ -1,8 +1,15 @@
 version: '3.7'
 services:
-    web:
-        build: ""
+    api:
+        build:
+            context: .
+            dockerfile: Dockerfile
         ports:
             - "5000:5000"
+        environment:
+            RUNTIME_ENV: dev
+            ENVIRONMENT: dev
         volumes:
             - .:/code
+        image: flask-api-template-image
+
