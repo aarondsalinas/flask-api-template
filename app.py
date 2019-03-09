@@ -1,16 +1,8 @@
-import os
-from flask_restful import Api
-from . import create_app
-from api.main.resources.healthResource import HealthResource
-from api.main.resources.apiInfoResource import ApiInfoResource
+from flask import Flask
+from api.main.resources import api
 
-app = create_app(os.getenv('BOILERPLATE_ENV') or 'dev')
-app.app_context().push()
-
-api = Api(app)
-api.add_resource(HealthResource, "/health")
-api.add_resource(ApiInfoResource, "/info")
-
+app = Flask(__name__)
+api.init_app(app)
 
 def run():
     app.run()
