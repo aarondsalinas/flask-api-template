@@ -1,8 +1,9 @@
 from flask import Flask
-from api.main.resources import api
+from api.main.resources import blueprint as resource_bp
 
 app = Flask(__name__)
-api.init_app(app)
+app.register_blueprint(resource_bp)
+
 
 def run():
     app.run()
